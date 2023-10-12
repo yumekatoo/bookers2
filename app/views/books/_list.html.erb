@@ -1,0 +1,47 @@
+
+<div class="col-md-3"> 
+
+<h1>User info</h1>
+
+
+<p><%= image_tag user.get_profile_image(100,100) %></p>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>name</th>
+<th><%= user.name %></th>
+</tr>
+</thead>
+
+<thead>
+<tr>
+<th>introduction</th>
+<th><%= user.introduction %></th>
+</thead>
+</table>
+<%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
+<i class="fas fa-user-cog"></i>
+<% end %>
+
+
+<h1>New book</h1>
+<!-- form_withにオプション追記 -->
+<%= form_with model: Book.new do |f| %>
+
+  <h6>Title</h6>
+  <%= f.text_field :title %>
+  
+  <h6>Opinion</h6>
+  <%= f.text_area :body %>
+  
+  <div class="actions">
+  <div class="d-grid gap-2 d-md-block">
+  <%= f.submit "Create Book" , class: "btn btn-success"  %>
+  <% end %>
+   </div>
+    </div>
+    
+ 
+</div>
+
+

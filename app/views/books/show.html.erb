@@ -1,0 +1,40 @@
+<main>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+<%= render 'list', user: @book.user %>
+<div class="col-md-8 offset-md-1">
+
+
+<table class="table table-striped">
+ <thead>
+  <h1>Book detail</h21>
+  </thead>
+  <tbody>
+  <th>
+ <%= link_to user_path(@book.user.id) do %>
+  <%=image_tag @book.user.get_profile_image(100,100) %>
+  <p><%=@book.user.name %></p>
+  <% end %>
+  </th>
+ <th><%=link_to @book.title, book_path(@book.id) %></th>
+ <th><%=@book.body %></th>
+ 
+  <th><% if @book.user == current_user %>
+  <%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success" %>
+  <% end %>
+  </th>
+  <th><% if @book.user == current_user %>
+    <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+  <% end %>
+  </th>
+
+  </tbody>
+  </table>
+
+
+  
+  </div>
+</div>
+</div>
+</main>
+  
